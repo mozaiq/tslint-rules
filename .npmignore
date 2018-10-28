@@ -1,0 +1,5 @@
+/.idea
+/src
+/test
+/mozaiq-tslint-rules-*.tgz
+/tsconfig.json

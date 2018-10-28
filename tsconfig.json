@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "sourceRoot": "./src",
+    "lib": ["es2018"]
+  }
+}
