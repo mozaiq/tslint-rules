@@ -1,0 +1,90 @@
+class ComponentWithCorrectOrder {
+
+    static foo = 1234;
+    static bar() {}
+
+    @Input() foo = 1234;
+    @Output() asdf = new EventEmitter();
+
+    @HostBinding('attr.foo') er = true;
+    @HostBinding('class.foo') yasdf = true;
+    @HostBinding('class.asdf') get isFoo() { return true; }
+    @HostBinding('style.foo') yxcv = true;
+    @HostBinding('foo') asdf = true;
+
+    @ContentChild() cc;
+    @ContentChildren() ccs;
+    @ViewChild() vc;
+    @ViewChildren() vcs;
+
+    prop = 1;
+
+    constructor() {}
+
+    ngOnChanges() {}
+    ngOnInit() {}
+    ngDoCheck() {}
+    ngAfterContentInit() {}
+    ngAfterContentChecked() {}
+    ngAfterViewInit() {}
+    ngAfterViewChecked() {}
+    ngOnDestroy() {}
+
+    @HostListener('window:resize') onWindowResize() {}
+    @HostListener('click') onClick() {}
+    onSubmit() {}
+
+    method() {}
+
+}
+
+
+class ComponentWithIncorrectOrders {
+
+    @Output() bar: string;
+    @Input() foo = new EventEmitter<boolean>();
+             ~~~                                [angular component order]
+
+    static bar() {}
+           ~~~      [angular component order]
+
+
+    static foo = 1234;
+           ~~~         [angular component order]
+
+
+    @HostBinding('foo') asdf = true;
+
+    @HostBinding('style.foo') yxcv = true;
+                              ~~~~         [angular component order]
+
+    @HostBinding('class.asdf') get isFoo() { return true; }
+                                   ~~~~~                   [angular component order]
+    @HostBinding('attr.foo') er = true;
+                             ~~         [angular component order]
+
+    @HostBinding('class.foo') yasdf = true;
+
+    ngOnChanges() {}
+
+    prop = 1;
+    ~~~~      [angular component order]
+
+    ngOnInit() {}
+
+    constructor() {}
+    ~~~~~~~~~~~              [angular component order]
+
+
+    @HostListener('click') onClick() {}
+
+    method() {}
+
+    onSubmit() {}
+    ~~~~~~~~      [angular component order]
+
+
+    @HostListener('window:resize') onWindowResize() {}
+                                   ~~~~~~~~~~~~~~      [angular component order]
+
+}

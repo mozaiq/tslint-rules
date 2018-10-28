@@ -6,11 +6,11 @@
 
 Add specific rule directory to your tslint.json
 
-`node_modules/@mozaiq/tslint-rules/TYPE`
+`node_modules/@mozaiq/tslint-rules/lib/rules/TYPE`
 
 ## Angular
 
-TODO
+* angular-component-order: restrict order of angular specific class parts (@Input, @Output, @HostBinding, etc.)
 
 ## Rxjs
 
